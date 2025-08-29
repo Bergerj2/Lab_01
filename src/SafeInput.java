@@ -165,12 +165,12 @@ public class SafeInput
     } 
     
 /**
-     * Get an unconstrained double value
-     * @param pipe - Scanner instance to read the data System.in in most cases
-     * @param prompt - input prompt msg should not contain range info
-     * @return  - an unconstrained double value 
-     */
-    public static double getDouble(Scanner pipe, String prompt)
+ * Get an unconstrained double value
+ *
+ * @param prompt - input prompt msg should not contain range info
+ * @return - an unconstrained double value
+ */
+    public static double getDouble(String prompt)
     {
        double retVal = 0;
        String trash = "";

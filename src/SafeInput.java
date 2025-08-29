@@ -11,14 +11,14 @@ import java.util.Scanner;
  * @author Tom Wulf Tom.Wulf@uc.edu
  */
 public class SafeInput 
-{
+{   private static Scanner pipe = new Scanner(System.in);
    /**
     * Get a String which contains at least one character
-    * @param pipe a Scanner opened to read from System.in
+    *
     * @param prompt prompt for the user
     * @return a String response that is not zero length
     */ 
-   public static String getNonZeroLenString(Scanner pipe, String prompt)
+   public static String getNonZeroLenString(String prompt)
    {
        String retString = "";
        do
@@ -54,13 +54,13 @@ public class SafeInput
 
     /**
      * Get an int value within a specified numeric range
-     * @param pipe - Scanner instance to read the data System.in in most cases
+     *
      * @param prompt - input prompt msg should not include range info
-     * @param low - low end of inclusive range
-     * @param high - high end of inclusive range
+     * @param low    - low end of inclusive range
+     * @param high   - high end of inclusive range
      * @return - int value within the inclusive range
      */
-    public static int getRangedInt(Scanner pipe, String prompt, int low, int high)
+    public static int getRangedInt(String prompt, int low, int high)
     {
        int retVal = 0;
        String trash = "";
@@ -197,11 +197,11 @@ public class SafeInput
     
     /**
      * Get a [Y/N] confirmation from the user
-     * @param pipe - Scanner instance to read the data System.in in most cases
+     *
      * @param prompt -input prompt msg for user does not need [Y/N]
      * @return - true for yes false for no
      */
-    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    public static boolean getYNConfirm(String prompt)
     {
         boolean retVal = true;
         String response = "";
@@ -260,5 +260,10 @@ public class SafeInput
         }while(!gotAVal);
         
         return response;
+    }
+
+    public static String ZeroLenString(String prompt) {
+        System.out.print("\n" + prompt + ": ");
+        return pipe.nextLine();
     }
 }

@@ -132,7 +132,7 @@ public class Person {
      */
     public int getAge() {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        return currentYear - this.YOB;
+        return currentYear - YOB;
     }
 
     /**
@@ -141,7 +141,7 @@ public class Person {
      * @return The person's age in the specified year.
      */
     public int getAge(int year) {
-        return year - this.YOB;
+        return year - YOB;
     }
 
     /**
@@ -160,48 +160,39 @@ public class Person {
      * @return A CSV-formatted string.
      */
     public String toCSV() {
-        return String.format("%s, %s, %s, %s, %d",
-                this.ID, this.firstName, this.lastName, this.title, this.YOB);
+        return ID + ", " + firstName + ", " + lastName + ", " + title + ", " + YOB;
     }
 
     /**
-     * Returns the Person object's data in a JavaScript Object Notation (JSON) format.
-     * @return A JSON-formatted string.
+     * Returns a JSON string representation of the person.
+     *
+     * @return A JSON formatted string.
      */
     public String toJSON() {
-        return String.format("{\"ID\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"title\": \"%s\", \"YOB\": %d}",
-                this.ID, this.firstName, this.lastName, this.title, this.YOB);
+        return "{\"ID\": \"" + ID + "\", \"firstName\": \"" + firstName + "\", \"lastName\": \"" + lastName + "\", \"title\": \"" + title + "\", \"YOB\": " + YOB + "}";
     }
 
     /**
-     * Returns the Person object's data in an Extensible Markup Language (XML) format.
-     * @return An XML-formatted string.
+     * Returns an XML string representation of the person.
+     *
+     * @return An XML formatted string.
      */
     public String toXML() {
-        return String.format("<Person><ID>%s</ID><firstName>%s</firstName><lastName>%s</lastName><title>%s</title><YOB>%d</YOB></Person>",
-                this.ID, this.firstName, this.lastName, this.title, this.YOB);
+        return "<Person><ID>" + ID + "</ID><firstName>" + firstName + "</firstName><lastName>" + lastName + "</lastName><title>" + title + "</title><YOB>" + YOB + "</YOB></Person>";
     }
 
     /**
      * Compares this Person object to another object for equality.
-     * Two Person objects are considered equal if their ID fields are the same.
-     * @param o The object to compare with.
-     * @return {@code true} if the objects are equal, {@code false} otherwise.
+     * Two persons are considered equal if their IDs are the same.
+     *
+     * @param obj The object to compare with.
+     * @return true if the objects are equal, false otherwise.
      */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(ID, person.ID);
-    }
-
-    /**
-     * Returns a hash code for this Person object based on its ID.
-     * @return The hash code.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(ID);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return ID.equals(person.ID);
     }
 }

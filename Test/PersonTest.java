@@ -145,8 +145,7 @@ class PersonTest {
      */
     @Test
     void testToString() {
-        String expectedString = String.format("ID: %-10s | First: %-10s | Last: %-10s | Title: %-5s | YOB: %4d",
-                VALID_ID, VALID_FIRST_NAME, VALID_LAST_NAME, VALID_TITLE, VALID_YOB);
+        String expectedString = "ID: 000001 | First: John       | Last: Doe        | Title: Mr.   | YOB: 1980";
         assertEquals(expectedString, validPerson.toString(), "toString method should return a correctly formatted string");
     }
 

@@ -1,4 +1,14 @@
-public class Product {
+import java.io.Serializable;
+import java.util.Objects;
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * A class that represents a product with an ID, name, description, and cost.
+ * This class provides methods to format the product data into different formats
+ * such as CSV, JSON, and XML.
+ */
+public class Product implements Serializable {
     private final String ID; // Unique identifier for the product, should never change
     private String name;
     private String description;
@@ -90,5 +100,18 @@ public class Product {
     public String toString() {
         return String.format("ID: %s | Name: %-25s | Description: %-30s | Cost: $%.2f",
                 ID, name, description, cost);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.cost, cost) == 0 && Objects.equals(ID, product.ID) && Objects.equals(name, product.name) && Objects.equals(description, product.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, name, description, cost);
     }
 }

@@ -7,10 +7,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * A class that reads a CSV file, creates Product objects from each record,
- * and displays the data in a formatted table.
- */
 public class ProductReader {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
